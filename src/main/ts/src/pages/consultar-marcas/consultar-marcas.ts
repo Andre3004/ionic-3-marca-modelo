@@ -1,6 +1,6 @@
 import { UtilsProvider } from './../../providers/utils/utils';
 import { MarcaServiceProvider } from './../../providers/marca-service/marca-service';
-import { HomePage } from './../home/home';
+import { CadastrarMarcasPage } from './../cadastrar-marcas/cadastrar-marcas';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { VisualizarMarcaPage } from '../visualizar-marca/visualizar-marca';
@@ -58,12 +58,12 @@ export class ConsultarMarcasPage
 
   editMarca(marca)
   {
-    this.navCtrl.push(HomePage, { marcaId: marca.id })
+    this.navCtrl.push(CadastrarMarcasPage.name, { marcaId: marca.id })
   }
 
   insertMarca()
   {
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(CadastrarMarcasPage.name);
   }
 
   removeMarca(marca)

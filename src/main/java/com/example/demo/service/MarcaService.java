@@ -45,8 +45,7 @@ public class MarcaService
 	 */
 	public Page<Marca> listMarcaByFilters( int size)
 	{
-		PageRequest pageable = new PageRequest(0, size, Sort.Direction.DESC, "nome");
-		return this.marcaRepositoy.findAll(pageable);
+		return this.marcaRepositoy.findAll(PageRequest.of(0, size, Sort.Direction.ASC, "nome"));
 	}
 
 	/**

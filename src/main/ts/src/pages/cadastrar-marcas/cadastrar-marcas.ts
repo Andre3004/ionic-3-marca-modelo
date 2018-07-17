@@ -2,15 +2,16 @@ import { UtilsProvider } from './../../providers/utils/utils';
 
 import { MarcaServiceProvider } from './../../providers/marca-service/marca-service';
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { ConsultarMarcasPage } from '../consultar-marcas/consultar-marcas';
 import { Vibration } from '@ionic-native/vibration';
 
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-cadastrar-marcas',
+  templateUrl: 'cadastrar-marcas.html'
 })
-export class HomePage implements OnInit
+export class CadastrarMarcasPage implements OnInit
 {
 
   public marca: any = {};

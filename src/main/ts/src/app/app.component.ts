@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { CadastrarMarcasPage } from '../pages/cadastrar-marcas/cadastrar-marcas';
 import { ConsultarMarcasPage } from '../pages/consultar-marcas/consultar-marcas';
 
 @Component({
@@ -22,7 +22,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Consultar marca', component: ConsultarMarcasPage },
-      { title: 'Cadastrar marca', component: HomePage },
+      { title: 'Cadastrar marca', component: CadastrarMarcasPage.name },
     ];
 
   }

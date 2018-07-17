@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastController, AlertController, Alert, LoadingController } from 'ionic-angular';
 import { Loading } from 'ionic-angular/components/loading/loading';
@@ -7,7 +6,7 @@ import { Loading } from 'ionic-angular/components/loading/loading';
 export class UtilsProvider
 {
 
-  constructor(private _http: HttpClient,
+  constructor(
     private _toastCtrl: ToastController,
     private _alertCtrl: AlertController,
     private _loadingCtrl: LoadingController)

@@ -1,7 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Http } from "@angular/http";
 import { AppSettings } from "../utils/app-settings";
 
 @Injectable()
@@ -10,7 +9,7 @@ export class MarcaServiceProvider
 
   private apiUrl = AppSettings.API_URL + '/marca/';
 
-  constructor(private _http: HttpClient, private http: Http)
+  constructor(private _http: HttpClient)
   { 
   }
 
