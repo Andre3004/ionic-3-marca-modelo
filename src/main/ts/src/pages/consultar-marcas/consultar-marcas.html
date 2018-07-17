@@ -1,0 +1,42 @@
+<!--
+  Generated template for the ConsultarMarcasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Consultar Marcas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-fab top right edge >
+      <button (click)="insertMarca()" ion-fab><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+
+  <ion-list *ngFor="let marca of marcas">
+    <ion-item-sliding>
+      <ion-item>
+        <h2>{{marca.nome}}</h2>
+      </ion-item>
+      <ion-item-options side="right">
+        <button (click)="selectMarca(marca)" ion-button color="primary">
+          Editar
+        </button>
+      </ion-item-options>
+      <ion-item-options side="left">
+          <button (click)="removeMarca(marca)" ion-button color="secondary">
+            Excluir
+          </button>
+        </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
