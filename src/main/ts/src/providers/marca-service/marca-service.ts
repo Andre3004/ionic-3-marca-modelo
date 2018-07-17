@@ -1,19 +1,17 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-
+import { Http } from "@angular/http";
+import { AppSettings } from "../utils/app-settings";
 
 @Injectable()
 export class MarcaServiceProvider
 {
 
-  private apiUrl = 'http://192.168.25.236:8080/api/marca/';
+  private apiUrl = AppSettings.API_URL + '/marca/';
 
-  private header = { "headers": {"Content-Type": "application/json"} };
-  
-  constructor(private _http: HttpClient)
+  constructor(private _http: HttpClient, private http: Http)
   { 
-    console.log('Hello MarcaServiceProvider Provider');
   }
 
   public findMarcaById(marcaId : Number): Observable<any>
@@ -23,12 +21,19 @@ export class MarcaServiceProvider
 
   public insertMarca(marca : any): Observable<any>
   {
-    return this._http.post(this.apiUrl + 'insertMarca/', JSON.stringify(marca), this.header);
+    return this._http.post(this.apiUrl + 'insertMarca/', JSON.stringify(marca), AppSettings.httpOptions);
   }
 
-  public listMarcaByFilters(): Observable<any>
+  public updateMarca(marca : any): Observable<any>
   {
-    return this._http.get(this.apiUrl + 'listMarcasByFilters');
+    return this._http.put(this.apiUrl + 'updateMarca/', JSON.stringify(marca), AppSettings.httpOptions);
+  }
+
+  public listMarcaByFilters(size: number): Observable<any>
+  {
+    const params = new HttpParams().set('size', size.toString());
+
+    return this._http.get(this.apiUrl + 'listMarcasByFilters', {params});
   }
 
   public removeMarca(marcaId): Observable<any>

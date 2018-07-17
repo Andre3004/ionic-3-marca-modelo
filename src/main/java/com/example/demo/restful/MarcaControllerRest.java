@@ -6,10 +6,12 @@ import com.example.demo.entity.Marca;
 import com.example.demo.service.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,12 +29,11 @@ public class MarcaControllerRest
 	 *
 	 * @return
 	 */
-	@CrossOrigin
 	@RequestMapping(value = "/listMarcasByFilters", method = RequestMethod.GET)
-	public List<Marca> listMarcasByFilters( )
+	@CrossOrigin
+	public List<Marca> listMarcasByFilters(@RequestParam int size)
 	{
-		return marcaService.listMarcaByFilters();
-
+		return marcaService.listMarcaByFilters(size).getContent();
 	}
 
 	@CrossOrigin
@@ -43,7 +44,6 @@ public class MarcaControllerRest
 
 	}
 
-
 	/**
 	 * @param marca
 	 * @return
@@ -53,6 +53,17 @@ public class MarcaControllerRest
 	public Marca insertEquipment( @RequestBody Marca marca )
 	{
 		return marcaService.insertMarca( marca );
+	}
+
+	/**
+	 * @param marca
+	 * @return
+	 */
+	@CrossOrigin
+	@RequestMapping(value = "/updateMarca", method = RequestMethod.PUT)
+	public Marca updateEquipment( @RequestBody Marca marca )
+	{
+		return marcaService.updateMarca( marca );
 	}
 
 	/**

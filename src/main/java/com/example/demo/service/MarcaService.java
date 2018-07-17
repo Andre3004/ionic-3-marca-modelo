@@ -1,11 +1,16 @@
 package com.example.demo.service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 import com.example.demo.entity.Marca;
 import com.example.demo.repository.IMarcaRepositoy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,9 +43,10 @@ public class MarcaService
 	 *
 	 * @return
 	 */
-	public List<Marca> listMarcaByFilters()
+	public Page<Marca> listMarcaByFilters( int size)
 	{
-		return this.marcaRepositoy.findAll();
+		PageRequest pageable = new PageRequest(0, size, Sort.Direction.DESC, "nome");
+		return this.marcaRepositoy.findAll(pageable);
 	}
 
 	/**
@@ -50,5 +56,10 @@ public class MarcaService
 	public void removeMarca(Long marcaId)
 	{
 		this.marcaRepositoy.deleteById( marcaId );
+	}
+
+	public Marca updateMarca( Marca marca )
+	{
+		return this.marcaRepositoy.save( marca );
 	}
 }

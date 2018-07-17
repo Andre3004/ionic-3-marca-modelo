@@ -18,25 +18,32 @@
 
 <ion-content padding>
 
-    <ion-fab top right edge >
-      <button (click)="insertMarca()" ion-fab><ion-icon name="add"></ion-icon></button>
-    </ion-fab>
+  <ion-fab bottom right margin-right margin-bottom>
+    <button (click)="insertMarca()" ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 
   <ion-list *ngFor="let marca of marcas">
     <ion-item-sliding>
-      <ion-item>
+      <ion-item (click)="selectMarca(marca)">
         <h2>{{marca.nome}}</h2>
       </ion-item>
       <ion-item-options side="right">
-        <button (click)="selectMarca(marca)" ion-button color="primary">
+        <button (click)="removeMarca(marca)" ion-button color="secondary">
+          Excluir
+        </button>
+        <button (click)="editMarca(marca)" ion-button color="primary">
           Editar
         </button>
       </ion-item-options>
-      <ion-item-options side="left">
-          <button (click)="removeMarca(marca)" ion-button color="secondary">
-            Excluir
-          </button>
-        </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())" *ngIf="size <= marcas.length">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais dados...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
 </ion-content>

@@ -10,19 +10,24 @@ import { Vibration } from '@ionic-native/vibration';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit
+{
 
   public marca: any = {};
 
 
-  constructor(private _vibration: Vibration, public utilsProvider: UtilsProvider, public navParams: NavParams, public navCtrl: NavController, public marcaServiceProvider: MarcaServiceProvider) 
+  constructor(private _vibration: Vibration,
+    public utilsProvider: UtilsProvider,
+    public navParams: NavParams,
+    public navCtrl: NavController,
+    public marcaServiceProvider: MarcaServiceProvider) 
   {
 
   }
 
   ngOnInit()
   {
-    if(this.navParams.get('marcaId'))
+    if (this.navParams.get('marcaId'))
     {
       this.findMarcaById(this.navParams.get('marcaId'));
     }
@@ -30,7 +35,7 @@ export class HomePage implements OnInit {
 
   public findMarcaById(id: number)
   {
-    this.marcaServiceProvider.findMarcaById(id).subscribe( marca => 
+    this.marcaServiceProvider.findMarcaById(id).subscribe(marca => 
     {
       this.marca = marca;
     }, err => console.log(err))
@@ -38,12 +43,37 @@ export class HomePage implements OnInit {
 
   public insertMarca(form)
   {
-    if(form.valid)
+    if (form.valid)
     {
-      this.marcaServiceProvider.insertMarca(this.marca).subscribe(result => {
-        this.utilsProvider.presentToast('Marca salva com sucesso!');
-        this.navCtrl.setRoot(ConsultarMarcasPage)
-      }, err => console.log(err))
+      let loading = this.utilsProvider.presentLoading('Salvando marca...');
+
+      loading.present();
+      if (this.navParams.get('marcaId'))
+      {
+        this.marcaServiceProvider.updateMarca(this.marca).subscribe(result =>
+        {
+          this.utilsProvider.presentToast('Marca atualizada com sucesso!');
+          this.navCtrl.setRoot(ConsultarMarcasPage);
+
+          loading.dismissAll();
+        }, execption =>
+          {
+            this.utilsProvider.presentToast(execption.error.message)
+            loading.dismissAll();
+          })
+      }
+      else
+      {
+        this.marcaServiceProvider.insertMarca(this.marca).subscribe(result =>
+        {
+          this.utilsProvider.presentToast('Marca inserida com sucesso!');
+          this.navCtrl.setRoot(ConsultarMarcasPage)
+          loading.dismissAll();
+        }, err =>
+        {
+          loading.dismissAll();
+        })
+      }
     }
     else
     {

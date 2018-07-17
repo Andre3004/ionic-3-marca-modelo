@@ -12,15 +12,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConsultarMarcasPage } from '../pages/consultar-marcas/consultar-marcas';
 import { UtilsProvider } from '../providers/utils/utils';
 import {Vibration} from '@ionic-native/vibration'
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage, 
-    ConsultarMarcasPage  ],
+    ConsultarMarcasPage,
+    
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

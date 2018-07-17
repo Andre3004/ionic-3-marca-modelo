@@ -8,8 +8,9 @@
 </ion-header>
 
 <ion-content padding>
+
   <ion-list>
-    <form #form="ngForm" (ngSubmit)="insertMarca(form)" >
+    <form #form="ngForm" id="form" (ngSubmit)="insertMarca(form)">
       <h3>Marca</h3>
 
       <ion-item>
@@ -21,8 +22,13 @@
         <ion-label floating>Descrição</ion-label>
         <ion-input required type="text" [(ngModel)]="marca.descricao" name="descricao"></ion-input>
       </ion-item>
-
-      <button margin-top ion-button block type="submit">Salvar marca</button>
     </form>
   </ion-list>
+
+  <ion-fab bottom right margin-right margin-bottom>
+    <button form="form" type="submit" ion-fab>
+      <ion-icon name="send"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>
