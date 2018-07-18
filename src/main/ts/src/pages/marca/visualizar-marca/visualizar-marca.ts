@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { MarcaServiceProvider } from '../../providers/marca-service/marca-service';
+import { MarcaServiceProvider } from '../../../providers/marca-service/marca-service';
 
 @IonicPage()
 @Component({

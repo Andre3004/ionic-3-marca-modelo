@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -39,21 +40,7 @@ public class Marca
 	/**
 	 *
 	 */
-	@OneToMany(mappedBy = "marca", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	@OneToMany(mappedBy = "marca", fetch = FetchType.LAZY)
 	private List<Modelo> modelos = new ArrayList<Modelo>();
-
-
-	/**
-	 *
-	 * @param modelos
-	 */
-	public void setModelos(List<Modelo> modelos)
-	{
-		if(modelos != null)
-		{
-			this.modelos.clear();
-			this.modelos.addAll( modelos );
-		}
-	}
-
 }

@@ -1,5 +1,5 @@
-import { UtilsProvider } from './../../providers/utils/utils';
-import { MarcaServiceProvider } from './../../providers/marca-service/marca-service';
+import { UtilsProvider } from './../../../providers/utils/utils';
+import { MarcaServiceProvider } from './../../../providers/marca-service/marca-service';
 import { CadastrarMarcasPage } from './../cadastrar-marcas/cadastrar-marcas';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';

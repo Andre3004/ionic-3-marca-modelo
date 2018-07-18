@@ -8,6 +8,6 @@ import { ConsultarMarcasPage } from './consultar-marcas';
   ],
   imports: [
     IonicPageModule.forChild(ConsultarMarcasPage),
-  ],
+  ]
 })
 export class ConsultarMarcasPageModule {}

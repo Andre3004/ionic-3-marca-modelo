@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Salvar modelo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <form #form="ngForm" id="form" (ngSubmit)="insertModelo(form)">
+      <h3>Modelo</h3>
+
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input required type="text" [(ngModel)]="modelo.nome" name="nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Descrição</ion-label>
+        <ion-input required type="text" [(ngModel)]="modelo.descricao" name="descricao"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Marcas</ion-label>
+        <ion-select required [(ngModel)]="modelo.marca" name="marca" [compareWith]="compareFn">
+          <ion-option *ngFor="let marca of marcas" [value]="marca">{{marca?.nome}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </form>
+  </ion-list>
+
+  <ion-fab bottom right margin-right margin-bottom>
+    <button form="form" type="submit" ion-fab>
+      <ion-icon name="send"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Visualizar detalhes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <label>{{modelo?.nome}}</label>
+    </ion-card-header>
+    <ion-card-content>
+      <label>{{modelo?.descricao}}</label>
+    </ion-card-content>
+    <ion-card-content>
+      <label>{{modelo?.marca?.nome}}</label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

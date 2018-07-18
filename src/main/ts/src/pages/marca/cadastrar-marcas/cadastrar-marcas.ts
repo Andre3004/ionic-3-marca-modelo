@@ -1,6 +1,6 @@
-import { UtilsProvider } from './../../providers/utils/utils';
+import { UtilsProvider } from './../../../providers/utils/utils';
 
-import { MarcaServiceProvider } from './../../providers/marca-service/marca-service';
+import { MarcaServiceProvider } from './../../../providers/marca-service/marca-service';
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { ConsultarMarcasPage } from '../consultar-marcas/consultar-marcas';
