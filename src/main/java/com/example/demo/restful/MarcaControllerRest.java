@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.demo.entity.Marca;
 import com.example.demo.service.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@EnableAutoConfiguration
+@CrossOrigin(origins = "http://localhost:8100", maxAge = 3600)
 @RequestMapping("api/marca")
 public class MarcaControllerRest
 {
@@ -30,13 +33,11 @@ public class MarcaControllerRest
 	 * @return
 	 */
 	@RequestMapping(value = "/listMarcasByFilters", method = RequestMethod.GET)
-	@CrossOrigin
 	public List<Marca> listMarcasByFilters(@RequestParam int size)
 	{
 		return marcaService.listMarcaByFilters(size).getContent();
 	}
 
-	@CrossOrigin
 	@RequestMapping(value = "/findMarcaById/{id}", method = RequestMethod.GET)
 	public Marca findMarcaById( @PathVariable Long id )
 	{
@@ -48,7 +49,6 @@ public class MarcaControllerRest
 	 * @param marca
 	 * @return
 	 */
-	@CrossOrigin
 	@RequestMapping(value = "/insertMarca", method = RequestMethod.POST)
 	public Marca insertEquipment( @RequestBody Marca marca )
 	{
@@ -59,7 +59,6 @@ public class MarcaControllerRest
 	 * @param marca
 	 * @return
 	 */
-	@CrossOrigin
 	@RequestMapping(value = "/updateMarca", method = RequestMethod.PUT)
 	public Marca updateEquipment( @RequestBody Marca marca )
 	{
@@ -70,7 +69,6 @@ public class MarcaControllerRest
 	 *
 	 * @param marcaId
 	 */
-	@CrossOrigin
 	@RequestMapping(value = "/removeMarca/{marcaId}", method = RequestMethod.DELETE)
 	public void removeMarca( @PathVariable Long marcaId )
 	{
