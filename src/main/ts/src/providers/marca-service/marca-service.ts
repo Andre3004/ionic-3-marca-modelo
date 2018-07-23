@@ -10,20 +10,20 @@ export class MarcaServiceProvider
   private apiUrl = AppSettings.API_URL + '/marca/';
 
   constructor(private _http: HttpClient)
-  { 
+  {
   }
 
-  public findMarcaById(marcaId : Number): Observable<any>
+  public findMarcaById(marcaId: Number): Observable<any>
   {
     return this._http.get(this.apiUrl + 'findMarcaById/' + marcaId);
   }
 
-  public insertMarca(marca : any): Observable<any>
+  public insertMarca(marca: any): Observable<any>
   {
     return this._http.post(this.apiUrl + 'insertMarca/', JSON.stringify(marca), AppSettings.httpOptions);
   }
 
-  public updateMarca(marca : any): Observable<any>
+  public updateMarca(marca: any): Observable<any>
   {
     return this._http.put(this.apiUrl + 'updateMarca/', JSON.stringify(marca), AppSettings.httpOptions);
   }
@@ -32,11 +32,11 @@ export class MarcaServiceProvider
   {
     const params = new HttpParams().set('size', size.toString());
 
-    return this._http.get(this.apiUrl + 'listMarcasByFilters', {params});
+    return this._http.get(this.apiUrl + 'listMarcasByFilters', { params });
   }
 
   public removeMarca(marcaId): Observable<any>
   {
-    return this._http.delete(this.apiUrl + 'removeMarca/'+marcaId);
+    return this._http.delete(this.apiUrl + 'removeMarca/' + marcaId);
   }
 }

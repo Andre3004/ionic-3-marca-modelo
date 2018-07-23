@@ -41,11 +41,14 @@ export class ConsultarMarcasPage
       {
         this.loading.dismissAll();
         this.marcas = result;
-      }, err => this.loading.dismissAll())
+      }, err =>
+      {        
+        this.loading.dismissAll()
+      })
 
       setTimeout(() =>
       {
-        
+
         resolve();
       }, 500);
     })

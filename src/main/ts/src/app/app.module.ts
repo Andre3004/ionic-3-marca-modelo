@@ -15,8 +15,10 @@ import { HttpModule } from '@angular/http';
 import { ModeloServiceProvider } from '../providers/modelo-service/modelo-service';
 import { ConsultarModeloPage } from '../pages/modelo/consultar-modelo/consultar-modelo';
 import { LoginPage } from '../pages/login/login'
-import { LoginServiceProvider } from '../providers/login-service/login-service';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { HttpsRequestInterceptor } from '../providers/utils/http-resquest.interceptor'
+
+import {IonicStorageModule} from '@ionic/storage'
 
 @NgModule({
   declarations: [
@@ -30,6 +32,12 @@ import { HttpsRequestInterceptor } from '../providers/utils/http-resquest.interc
     HttpClientModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: 'marcaModelo',
+      storeName: 'marcaModelo',
+      driverOrder: ['indexeddb']
+    })
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,7 +54,7 @@ import { HttpsRequestInterceptor } from '../providers/utils/http-resquest.interc
     UtilsProvider, 
     Vibration,
     ModeloServiceProvider,
-    LoginServiceProvider,
+    AuthServiceProvider,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpsRequestInterceptor,
