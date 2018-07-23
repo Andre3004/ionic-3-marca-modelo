@@ -57,6 +57,16 @@ public class Usuario implements UserDetails
 		return users;
 	}
 
+	public Usuario ()
+	{
+	}
+
+	public Usuario (String email, String senha)
+	{
+		this.email = email;
+		this.senha = senha;
+	}
+
 	@Override
 	public String getPassword()
 	{

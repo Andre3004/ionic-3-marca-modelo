@@ -7,19 +7,23 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MarcaServiceProvider } from '../providers/marca-service/marca-service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConsultarMarcasPage } from '../pages/marca/consultar-marcas/consultar-marcas';
 import { UtilsProvider } from '../providers/utils/utils';
 import {Vibration} from '@ionic-native/vibration'
 import { HttpModule } from '@angular/http';
 import { ModeloServiceProvider } from '../providers/modelo-service/modelo-service';
 import { ConsultarModeloPage } from '../pages/modelo/consultar-modelo/consultar-modelo';
+import { LoginPage } from '../pages/login/login'
+import { LoginServiceProvider } from '../providers/login-service/login-service';
+import { HttpsRequestInterceptor } from '../providers/utils/http-resquest.interceptor'
 
 @NgModule({
   declarations: [
     MyApp,
     ConsultarMarcasPage,
-    ConsultarModeloPage
+    ConsultarModeloPage,
+    LoginPage
     ],
   imports: [
     BrowserModule,
@@ -31,7 +35,8 @@ import { ConsultarModeloPage } from '../pages/modelo/consultar-modelo/consultar-
   entryComponents: [
     MyApp,
     ConsultarMarcasPage, 
-    ConsultarModeloPage
+    ConsultarModeloPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -40,7 +45,13 @@ import { ConsultarModeloPage } from '../pages/modelo/consultar-modelo/consultar-
     MarcaServiceProvider,
     UtilsProvider, 
     Vibration,
-    ModeloServiceProvider
+    ModeloServiceProvider,
+    LoginServiceProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpsRequestInterceptor,
+      multi: true,
+     },
   ],
 })
 export class AppModule {}
